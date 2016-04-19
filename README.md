@@ -10,14 +10,14 @@ The main goals of this gem are:
 Just add the following to your Gemfile.
 
 ```ruby
-gem 'gosuapi'
+gem 'gosu_api'
 ```
 
 And follow that up with a ``bundle install``.
 
 Then generate the initializer file with this command
 
-``bin/rails generate gosuapi:install``
+``bin/rails generate gosu_api:install``
 
 Now all you have to do is set your API key in the intitalizer file and you're good to go.
 
