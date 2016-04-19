@@ -1,4 +1,5 @@
 # GosuAPI
+[![Code Climate](https://codeclimate.com/github/StefanDorresteijn/GosuAPI/badges/gpa.svg)](https://codeclimate.com/github/StefanDorresteijn/GosuAPI)
 
 GosuAPI is a gem created to communicate with the GosuGamers.net Matchticker.
 The main goals of this gem are:
