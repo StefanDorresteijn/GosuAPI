@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Stefan Dorresteijn"]
   s.email       = 'stefan@refreshseo.nl'
   s.files       = ["lib/gosu_api.rb", "lib/gosu_api/gosu_api.rb", "lib/gosu_api/matchticker.rb", "lib/gosu_api/exceptions/forbidden_error.rb", "lib/gosu_api/configuration.rb", "lib/generators/gosu_api/install/templates/gosu_api.rb", "lib/generators/gosu_api/install/install_generator.rb"]
-  s.homepage    = ''
+  s.homepage    = 'https://github.com/StefanDorresteijn/GosuAPI'
   s.license     = 'MIT'
 
 
