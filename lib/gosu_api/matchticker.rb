@@ -20,41 +20,26 @@ module GosuApi
       method = 'matches'
       parameters = {}
 
-      if game
-        unless GosuApi::GAMES.has_key?(game.to_sym)
-          raise ArgumentError.new("This game is not a part of the Gosu Matchticker API.")
-        end
+      raise ArgumentError.new("Max results is out of range. This parameter should not exceed 25 results.") if max_results < 1 || max_results > 25
+      raise ArgumentError.new("Offset is out of range.") if offset < 0
 
+      if game
+        raise ArgumentError.new("This game is not a part of the Gosu Matchticker API.") unless GosuApi::GAMES.has_key?(game.to_sym)
         parameters['game'] = GosuApi::GAMES[game.to_sym]
       end
 
-      if max_results < 1 || max_results > 25
-        raise ArgumentError.new("Max results is out of range. This parameter should not exceed 25 results.")
-      end
-
-      parameters['maxResults'] = max_results
-
-      if offset < 0
-        raise ArgumentError.new("Offset is out of range.")
-      end
-
-      parameters['offset'] = offset
-
       if date_from
-        unless date_from.is_a?(DateTime)
-          raise ArgumentError.new("The date_from provided should be in the DD-MM-YYYY format.")
-        end
-
+        raise ArgumentError.new("The date_from provided should be in the DD-MM-YYYY format.") unless date_from.is_a?(DateTime)
         parameters['dateFrom'] = date_from.strftime("%d-%m-%Y")
       end
 
       if date_to
-        unless date_to.is_a?(DateTime)
-          raise ArgumentError.new("The date_to provided should be in the DD-MM-YYYY format.")
-        end
-
-      parameters['dateTo'] = date_to.strftime("%d-%m-%Y")
+        raise ArgumentError.new("The date_to provided should be in the DD-MM-YYYY format.") unless date_to.is_a?(DateTime)
+        parameters['dateTo'] = date_to.strftime("%d-%m-%Y")
       end
+
+      parameters['maxResults'] = max_results
+      parameters['offset'] = offset
 
       api_result = send_request(method, parameters)
       api_result["matches"]
